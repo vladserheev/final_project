@@ -25,18 +25,17 @@ namespace final_project
 
         public void BaseFirstInitialisation()
         {
+            Console.WriteLine("first initalization");
             using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data1.json"))
             {
                 string json = r.ReadToEnd();
-                List<Book> BooksFromJson = JsonConvert.DeserializeObject<List<Book>>(json);
-                BooksList = BooksFromJson;
+                BooksList = JsonConvert.DeserializeObject<List<Book>>(json);
             }
 
             using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data2.json"))
             {
                 string json = r.ReadToEnd();
-                List<Reader> ReadersFromJson = JsonConvert.DeserializeObject<List<Reader>>(json);
-                ReadersList = ReadersFromJson;
+                ReadersList = JsonConvert.DeserializeObject<List<Reader>>(json);
             }
         }
         public void AddNewBook(string title, string author)
@@ -109,7 +108,6 @@ namespace final_project
         public Reader SignIn(string username, string password)
         {
             Reader reader = ReadersList.Find(x => x.Name == username && x.Pass == password);
-            Console.WriteLine(reader._Id);
             if (reader == null)
             {
                 Console.WriteLine("SignIn failed");
@@ -125,6 +123,13 @@ namespace final_project
         public Reader GetUserById(Guid id)
         {
             return ReadersList.Find(x => x._Id == id);
+        }
+
+        public void GiveBookToUser(Book book, Reader reader)
+        { 
+            reader.BooksInReadingIds.Add(book._Id);
+            //Console.WriteLine(reader.Name);
+            RefreshReadersJson();
         }
     }
 }

@@ -38,6 +38,16 @@
             ShowAllAvailableBooks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // ShowAllAvailableBooks
+            // 
+            ShowAllAvailableBooks.Location = new System.Drawing.Point(41, 70);
+            ShowAllAvailableBooks.Name = "ShowAllAvailableBooks";
+            ShowAllAvailableBooks.Size = new System.Drawing.Size(109, 23);
+            ShowAllAvailableBooks.TabIndex = 1;
+            ShowAllAvailableBooks.Text = "Всі книги";
+            ShowAllAvailableBooks.UseVisualStyleBackColor = true;
+            ShowAllAvailableBooks.Click += new System.EventHandler(this.ShowAllAvailableBooks_Click);
+            // 
             // BooksListBox
             // 
             this.BooksListBox.FormattingEnabled = true;
@@ -47,15 +57,6 @@
             this.BooksListBox.Size = new System.Drawing.Size(256, 116);
             this.BooksListBox.TabIndex = 0;
             // 
-            // ShowAllAvailableBooks
-            // 
-            ShowAllAvailableBooks.Location = new System.Drawing.Point(41, 70);
-            ShowAllAvailableBooks.Name = "ShowAllAvailableBooks";
-            ShowAllAvailableBooks.Size = new System.Drawing.Size(109, 23);
-            ShowAllAvailableBooks.TabIndex = 1;
-            ShowAllAvailableBooks.Text = "Всі книги";
-            ShowAllAvailableBooks.UseVisualStyleBackColor = true;
-            // 
             // ShowMyBooks
             // 
             this.ShowMyBooks.Location = new System.Drawing.Point(199, 70);
@@ -64,6 +65,7 @@
             this.ShowMyBooks.TabIndex = 2;
             this.ShowMyBooks.Text = "Мої книги";
             this.ShowMyBooks.UseVisualStyleBackColor = true;
+            this.ShowMyBooks.Click += new System.EventHandler(this.ShowMyBooks_Click);
             // 
             // ReturnBook
             // 
@@ -82,6 +84,7 @@
             this.BorrowBook.TabIndex = 4;
             this.BorrowBook.Text = "Взяти";
             this.BorrowBook.UseVisualStyleBackColor = true;
+            this.BorrowBook.Click += new System.EventHandler(this.BorrowBook_Click);
             // 
             // UserPassL
             // 

@@ -16,7 +16,12 @@ namespace final_project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new AuthForm());
+            //Application.Run(new Form1());
+
+            Guid guid = Guid.Parse("ebd5876c-fd45-40f7-818a-c166b53af2a4");
+            Application.Run(new UserForm(guid));
+
         }
     }
 }

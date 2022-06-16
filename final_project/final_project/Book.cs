@@ -11,19 +11,25 @@ namespace final_project
         public string Title { get; set; }
 
         public string Author { get; set; }
-       //public int Count { get; set; }
-
-        public Guid _Id { get; private set; }
-
+       
+        public Guid _Id { get; set; }
+        public Guid Id { get;  set; }
+        public int id { get; set; } 
+        public Book()
+        {
+            Console.WriteLine("BookCreatedFromJson");
+        }
         public Book(string title, string author)
         {
+            Console.WriteLine("BookCreated");
             Title = title;
-            Author = author;
+            Author = author; 
             _Id = Guid.NewGuid();
         }
+
         public override string ToString()
         {
-            return Title + "  " + Author + "";
+            return Title + " " + Author + " " + _Id;
         }
     }
 }
