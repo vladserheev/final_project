@@ -53,7 +53,6 @@ namespace final_project
             if (BooksListBox.SelectedItem != null)
             {
                 Book book = ((Book)BooksListBox.SelectedItem);
-                user.Name = "5";
                 lib.GiveBookToUser(book, user);
             }
         }
@@ -61,6 +60,21 @@ namespace final_project
         private void ShowAllAvailableBooks_Click(object sender, EventArgs e)
         {
             RefreshBooksList(0);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReturnBook_Click(object sender, EventArgs e)
+        {
+            if (BooksListBox.SelectedItem != null)
+            {
+                Book book = ((Book)BooksListBox.SelectedItem);
+                lib.ReturnBook(book, user);
+            }
+            RefreshBooksList(1);
         }
     }
 }

@@ -18,11 +18,7 @@ namespace final_project
         {
             BaseFirstInitialisation();
         }
-        public void SetDataFromJsonToBd()
-        {
-           // new Reader() { Name = "vlad", Pass = "china" };
-        }
-
+       
         public void BaseFirstInitialisation()
         {
             Console.WriteLine("first initalization");
@@ -44,10 +40,12 @@ namespace final_project
             BooksList.Add(book);
         }
 
-        public void AddNewUser(string name, string pass, bool isAdmin)
+        public Guid AddNewUser(string name, string pass, bool isAdmin)
         {
             Reader reader = new Reader(name, pass, isAdmin);
             ReadersList.Add(reader);
+            RefreshReadersJson();
+            return reader._Id;
         }
         public bool RemoveBook(Guid id)
         {
@@ -126,9 +124,13 @@ namespace final_project
         }
 
         public void GiveBookToUser(Book book, Reader reader)
-        { 
+        {
             reader.BooksInReadingIds.Add(book._Id);
-            //Console.WriteLine(reader.Name);
+            RefreshReadersJson();
+        }
+        public void ReturnBookFromUser(Book book, Reader reader)
+        {
+            reader.BooksInReadingIds.Remove(book._Id);
             RefreshReadersJson();
         }
     }

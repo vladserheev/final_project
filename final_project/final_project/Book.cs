@@ -13,8 +13,6 @@ namespace final_project
         public string Author { get; set; }
        
         public Guid _Id { get; set; }
-        public Guid Id { get;  set; }
-        public int id { get; set; } 
         public Book()
         {
             Console.WriteLine("BookCreatedFromJson");
@@ -29,7 +27,7 @@ namespace final_project
 
         public override string ToString()
         {
-            return Title + " " + Author + " " + _Id;
+            return Title + " " + Author;
         }
     }
 }

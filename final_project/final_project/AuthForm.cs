@@ -26,15 +26,40 @@ namespace final_project
             Reader reader = lib.SignIn(userName, userPass);
             if (reader == null)
             {
-                resLabel.Text = "null";
+                resLabel.Text = "Невдалося ввійти";
+            }
+            else if(reader.IsAdmin == true) // Перевірка чи коримстувач адмін
+            {
+                OpenAdminForm();
             }
             else
             {
-                UserForm userForm = new UserForm(reader._Id);
-
-                userForm.Show();
+                OpenUserForm(reader._Id);
             }
         }
 
+        private void RegBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void RegBtn_Click_1(object sender, EventArgs e)
+        {
+            string userName = UserNameInput.Text;
+            string userPass = UserPassInput.Text;
+            Guid id = lib.AddNewUser(userName, userPass, false);
+            OpenUserForm(id);
+        }
+
+        private void OpenUserForm(Guid id)
+        {
+            UserForm userForm = new UserForm(id);
+            userForm.Show();
+        }
+
+        private void OpenAdminForm()
+        {
+            AdminForm adminForm = new AdminForm();
+            adminForm.Show();
+        }
     }
 }

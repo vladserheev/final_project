@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace final_project
 {
-    public partial class Form1 : Form
+    public partial class AdminForm : Form
     {
         Library lib = new Library();
-        public Form1()
+        public AdminForm()
         {
             InitializeComponent();
             RefreshBooksListBox();
@@ -23,16 +23,6 @@ namespace final_project
         {
             BooksListBox.DataSource = lib.BooksList.ToList();
             ReadersBoxList.DataSource = lib.ReadersList.ToList();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void RefreshBooksListBox()
@@ -52,16 +42,6 @@ namespace final_project
             RefreshBooksListBox();
         }
 
-        private void ChangeUserPassInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChangeUserNameInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void BooksListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (BooksListBox.SelectedItem != null)
@@ -69,6 +49,17 @@ namespace final_project
                 Book book = ((Book)BooksListBox.SelectedItem);
                 BookTitleInput.Text = book.Title;
                 BookAuthorInput.Text = book.Author;
+            }
+        }
+
+        private void ReadersBoxList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ReadersBoxList.SelectedItem != null)
+            {
+                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
+                UserNameInput.Text = reader.Name;
+                UserPassInput.Text = "";
+                IsAdminCheckBox.Checked = reader.IsAdmin;
             }
         }
 
@@ -99,8 +90,8 @@ namespace final_project
         {
             string name = UserNameInput.Text;
             string pass = UserPassInput.Text;
-            lib.AddNewUser(name, pass, false);
-            lib.RefreshReadersJson();
+            bool isAdmin = IsAdminCheckBox.Checked;
+            lib.AddNewUser(name, pass, isAdmin);
             RefreshReadersListBox();
         }
 
@@ -127,14 +118,9 @@ namespace final_project
             }
         }
 
-        private void ReadersBoxList_SelectedIndexChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            if (ReadersBoxList.SelectedItem != null)
-            {
-                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
-                UserNameInput.Text = reader.Name;
-                UserPassInput.Text = reader.Pass;
-            }
+
         }
     }
 }

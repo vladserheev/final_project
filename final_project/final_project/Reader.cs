@@ -29,7 +29,7 @@ namespace final_project
         }
         public override string ToString()
         {
-            return $"{Name} {Pass} {IsAdmin} {_Id}";
+            return $"{Name} isAdmin:{IsAdmin}";
         }
     }
 }
