@@ -48,6 +48,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.IsAdminCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.UserBooksLiistBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BookAuthorInput
@@ -94,6 +96,7 @@
             this.ReadersBoxList.Name = "ReadersBoxList";
             this.ReadersBoxList.Size = new System.Drawing.Size(283, 132);
             this.ReadersBoxList.TabIndex = 8;
+            this.ReadersBoxList.SelectedIndexChanged += new System.EventHandler(this.ReadersBoxList_SelectedIndexChanged);
             // 
             // UserNameInput
             // 
@@ -236,13 +239,34 @@
             this.label1.Size = new System.Drawing.Size(163, 25);
             this.label1.TabIndex = 23;
             this.label1.Text = "Сторінка адміна";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // UserBooksLiistBox
+            // 
+            this.UserBooksLiistBox.FormattingEnabled = true;
+            this.UserBooksLiistBox.ItemHeight = 16;
+            this.UserBooksLiistBox.Items.AddRange(new object[] {
+            "54545"});
+            this.UserBooksLiistBox.Location = new System.Drawing.Point(758, 138);
+            this.UserBooksLiistBox.Name = "UserBooksLiistBox";
+            this.UserBooksLiistBox.Size = new System.Drawing.Size(254, 132);
+            this.UserBooksLiistBox.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(755, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 16);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Книги користувача";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 551);
+            this.ClientSize = new System.Drawing.Size(1049, 551);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.UserBooksLiistBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IsAdminCheckBox);
             this.Controls.Add(this.label4);
@@ -291,6 +315,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox IsAdminCheckBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox UserBooksLiistBox;
+        private System.Windows.Forms.Label label2;
     }
 }
 

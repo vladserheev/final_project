@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace final_project
@@ -47,6 +42,10 @@ namespace final_project
         {
             RefreshBooksList(1);
         }
+        private void ShowAllAvailableBooks_Click(object sender, EventArgs e)
+        {
+            RefreshBooksList(0);
+        }
 
         private void BorrowBook_Click(object sender, EventArgs e)
         {
@@ -57,24 +56,27 @@ namespace final_project
             }
         }
 
-        private void ShowAllAvailableBooks_Click(object sender, EventArgs e)
-        {
-            RefreshBooksList(0);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ReturnBook_Click(object sender, EventArgs e)
         {
             if (BooksListBox.SelectedItem != null)
             {
                 Book book = ((Book)BooksListBox.SelectedItem);
-                lib.ReturnBook(book, user);
+                lib.ReturnBookFromUser(book, user);
             }
             RefreshBooksList(1);
+        }
+
+        private void UserPassL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SerchBtn_Click(object sender, EventArgs e)
+        {
+            string searchString = SearchInput.Text;
+            List<Book> searchResults = lib.BooksList.FindAll(x => x.Title.Contains(searchString));
+            //RefreshBooksList(0);
+            BooksListBox.DataSource = searchResults;
         }
     }
 }

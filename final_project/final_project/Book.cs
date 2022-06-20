@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace final_project
 {
@@ -15,7 +11,7 @@ namespace final_project
         public Guid _Id { get; set; }
         public Book()
         {
-            Console.WriteLine("BookCreatedFromJson");
+            Console.WriteLine("Book created from json");
         }
         public Book(string title, string author)
         {

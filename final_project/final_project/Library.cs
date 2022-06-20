@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace final_project
 {
@@ -22,13 +19,13 @@ namespace final_project
         public void BaseFirstInitialisation()
         {
             Console.WriteLine("first initalization");
-            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data1.json"))
+            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/booksDb.json"))
             {
                 string json = r.ReadToEnd();
                 BooksList = JsonConvert.DeserializeObject<List<Book>>(json);
             }
 
-            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data2.json"))
+            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/readersDb.json"))
             {
                 string json = r.ReadToEnd();
                 ReadersList = JsonConvert.DeserializeObject<List<Reader>>(json);
@@ -38,6 +35,7 @@ namespace final_project
         {
             Book book = new Book(title, author);
             BooksList.Add(book);
+            RefreshBooksJson();
         }
 
         public Guid AddNewUser(string name, string pass, bool isAdmin)
@@ -80,7 +78,7 @@ namespace final_project
             try
             {
                 string json = JsonConvert.SerializeObject(BooksList.ToArray());
-                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data1.json", json);
+                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/booksDb.json", json);
                 return true;
             }catch (Exception ex)
             {
@@ -94,7 +92,7 @@ namespace final_project
             try
             {
                 string json = JsonConvert.SerializeObject(ReadersList.ToArray());
-                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/data2.json", json);
+                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/readersDb.json", json);
                 return true;
             }catch (Exception ex)
             {
@@ -121,6 +119,11 @@ namespace final_project
         public Reader GetUserById(Guid id)
         {
             return ReadersList.Find(x => x._Id == id);
+        }
+
+        public Book GetBookById(Guid id)
+        {
+            return BooksList.Find(x => x._Id == id);
         }
 
         public void GiveBookToUser(Book book, Reader reader)

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace final_project
@@ -38,8 +33,28 @@ namespace final_project
             string title = BookTitleInput.Text;
             string author = BookAuthorInput.Text;
             lib.AddNewBook(title, author);
-            lib.RefreshBooksJson();
             RefreshBooksListBox();
+        }
+        private void AddReaderBtn_Click(object sender, EventArgs e)
+        {
+            string name = UserNameInput.Text;
+            string pass = UserPassInput.Text;
+            bool isAdmin = IsAdminCheckBox.Checked;
+            lib.AddNewUser(name, pass, isAdmin);
+            RefreshReadersListBox();
+        }
+
+        private void ReadersBoxList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ReadersBoxList.SelectedItem != null)
+            {
+                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
+                UserNameInput.Text = reader.Name;
+                UserPassInput.Text = reader.Pass;
+                IsAdminCheckBox.Checked = reader.IsAdmin;
+
+                ShowUserBooks(reader);
+            }
         }
 
         private void BooksListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,17 +64,6 @@ namespace final_project
                 Book book = ((Book)BooksListBox.SelectedItem);
                 BookTitleInput.Text = book.Title;
                 BookAuthorInput.Text = book.Author;
-            }
-        }
-
-        private void ReadersBoxList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ReadersBoxList.SelectedItem != null)
-            {
-                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
-                UserNameInput.Text = reader.Name;
-                UserPassInput.Text = "";
-                IsAdminCheckBox.Checked = reader.IsAdmin;
             }
         }
 
@@ -86,15 +90,7 @@ namespace final_project
             }
         }
 
-        private void AddReaderBtn_Click(object sender, EventArgs e)
-        {
-            string name = UserNameInput.Text;
-            string pass = UserPassInput.Text;
-            bool isAdmin = IsAdminCheckBox.Checked;
-            lib.AddNewUser(name, pass, isAdmin);
-            RefreshReadersListBox();
-        }
-
+  
         private void RemoveReader_Click(object sender, EventArgs e)
         {
             if (ReadersBoxList.SelectedItem != null)
@@ -113,14 +109,22 @@ namespace final_project
                 Reader reader = ((Reader)ReadersBoxList.SelectedItem);
                 reader.Name = UserNameInput.Text;
                 reader.Pass = UserPassInput.Text;
+                reader.IsAdmin = IsAdminCheckBox.Checked;
                 lib.RefreshReadersJson();
                 RefreshReadersListBox();
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ShowUserBooks (Reader reader)
         {
-
+            Console.WriteLine(reader.Name);
+            List<Book> userBookList = new List<Book>();
+            foreach(Guid id in reader.BooksInReadingIds)
+            {
+                Console.WriteLine(id);
+                userBookList.Add(lib.GetBookById(id));
+            }
+            UserBooksLiistBox.DataSource = userBookList.ToList();
         }
     }
 }

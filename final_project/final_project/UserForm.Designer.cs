@@ -36,6 +36,8 @@
             this.UserPassL = new System.Windows.Forms.Label();
             this.UserNameL = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.SearchInput = new System.Windows.Forms.TextBox();
+            this.SerchBtn = new System.Windows.Forms.Button();
             ShowAllAvailableBooks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             // 
             this.BooksListBox.FormattingEnabled = true;
             this.BooksListBox.ItemHeight = 16;
-            this.BooksListBox.Location = new System.Drawing.Point(41, 118);
+            this.BooksListBox.Location = new System.Drawing.Point(41, 155);
             this.BooksListBox.Name = "BooksListBox";
             this.BooksListBox.Size = new System.Drawing.Size(308, 116);
             this.BooksListBox.TabIndex = 0;
@@ -70,7 +72,7 @@
             // 
             // ReturnBook
             // 
-            this.ReturnBook.Location = new System.Drawing.Point(178, 262);
+            this.ReturnBook.Location = new System.Drawing.Point(178, 299);
             this.ReturnBook.Name = "ReturnBook";
             this.ReturnBook.Size = new System.Drawing.Size(98, 23);
             this.ReturnBook.TabIndex = 3;
@@ -80,7 +82,7 @@
             // 
             // BorrowBook
             // 
-            this.BorrowBook.Location = new System.Drawing.Point(41, 262);
+            this.BorrowBook.Location = new System.Drawing.Point(41, 299);
             this.BorrowBook.Name = "BorrowBook";
             this.BorrowBook.Size = new System.Drawing.Size(109, 23);
             this.BorrowBook.TabIndex = 4;
@@ -91,11 +93,12 @@
             // UserPassL
             // 
             this.UserPassL.AutoSize = true;
-            this.UserPassL.Location = new System.Drawing.Point(38, 99);
+            this.UserPassL.Location = new System.Drawing.Point(38, 97);
             this.UserPassL.Name = "UserPassL";
             this.UserPassL.Size = new System.Drawing.Size(66, 16);
             this.UserPassL.TabIndex = 5;
             this.UserPassL.Text = "Всі книги";
+            this.UserPassL.Click += new System.EventHandler(this.UserPassL_Click);
             // 
             // UserNameL
             // 
@@ -114,13 +117,31 @@
             this.label1.Size = new System.Drawing.Size(88, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Користувач:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // SearchInput
+            // 
+            this.SearchInput.Location = new System.Drawing.Point(41, 127);
+            this.SearchInput.Name = "SearchInput";
+            this.SearchInput.Size = new System.Drawing.Size(100, 22);
+            this.SearchInput.TabIndex = 8;
+            // 
+            // SerchBtn
+            // 
+            this.SerchBtn.Location = new System.Drawing.Point(157, 126);
+            this.SerchBtn.Name = "SerchBtn";
+            this.SerchBtn.Size = new System.Drawing.Size(75, 23);
+            this.SerchBtn.TabIndex = 9;
+            this.SerchBtn.Text = "Пошук";
+            this.SerchBtn.UseVisualStyleBackColor = true;
+            this.SerchBtn.Click += new System.EventHandler(this.SerchBtn_Click);
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SerchBtn);
+            this.Controls.Add(this.SearchInput);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UserNameL);
             this.Controls.Add(this.UserPassL);
@@ -145,5 +166,7 @@
         private System.Windows.Forms.Label UserPassL;
         private System.Windows.Forms.Label UserNameL;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox SearchInput;
+        private System.Windows.Forms.Button SerchBtn;
     }
 }
