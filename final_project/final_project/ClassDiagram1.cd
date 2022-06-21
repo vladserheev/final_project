@@ -1,24 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="final_project.AdminForm">
+    <Position X="3.5" Y="2.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AFICAAEAQSohABAEIoCAkAACIAIAAACUIoQACCAZgIA=</HashCode>
+      <FileName>AdminForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="final_project.AuthForm">
+    <Position X="7.75" Y="2.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAAEAAAQCAgABAAgACAgAACAAAAAAASAAAAAAAABAA=</HashCode>
+      <FileName>AuthForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="final_project.UserForm">
+    <Position X="12.25" Y="2" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAACgwkBAAQAiAAgACBCBQAAAAAQAAAAIACQA=</HashCode>
+      <FileName>UserForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="final_project.Library">
+    <Position X="17.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAgACIQBAAAQAAAQIAAEAAAAAAgAAAAAAEAQAAABA=</HashCode>
+      <FileName>Library.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="final_project.Reader">
-    <Position X="1" Y="0.5" Width="1.5" />
+    <Position X="22.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAQAAAAEAAAAAAQACAAAAAAACAAAAAAEAAA=</HashCode>
       <FileName>Reader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="final_project.Book">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="21" Y="7" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAEgAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAFAAAAAAAAAAEAEgAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Book.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="final_project.Library">
-    <Position X="6.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAgACIQBAAAQAAAQIAAEAAAAAAAAAAAAAEAQAAABA=</HashCode>
-      <FileName>Library.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

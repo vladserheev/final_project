@@ -7,9 +7,8 @@ namespace final_project
 {
     internal class Library
     {
-        public List<Book> BooksList { get; set; }
-
-        public List<Reader> ReadersList { get; set; }
+        public List<Book> BooksList;
+        public List<Reader> ReadersList;
 
         public Library()
         {
@@ -18,17 +17,23 @@ namespace final_project
        
         public void BaseFirstInitialisation()
         {
-            Console.WriteLine("first initalization");
-            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/booksDb.json"))
+            //throw new StackOverflowException();
+            try
             {
-                string json = r.ReadToEnd();
-                BooksList = JsonConvert.DeserializeObject<List<Book>>(json);
-            }
-
-            using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/readersDb.json"))
+                Console.WriteLine("first initalization");
+                using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/booksDb.json"))
+                {
+                    string json = r.ReadToEnd();
+                    BooksList = JsonConvert.DeserializeObject<List<Book>>(json);
+                }
+                using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/readersDb.json"))
+                {
+                    string json = r.ReadToEnd();
+                    ReadersList = JsonConvert.DeserializeObject<List<Reader>>(json);
+                }
+            }catch (Exception ex)
             {
-                string json = r.ReadToEnd();
-                ReadersList = JsonConvert.DeserializeObject<List<Reader>>(json);
+                Console.WriteLine(ex.Message);
             }
         }
         public void AddNewBook(string title, string author)
@@ -128,13 +133,20 @@ namespace final_project
 
         public void GiveBookToUser(Book book, Reader reader)
         {
+            Console.WriteLine("give book");
             reader.BooksInReadingIds.Add(book._Id);
+            book.Reader_ID = reader._Id;
+            book.IsOnUse = true;
             RefreshReadersJson();
+            RefreshBooksJson();
         }
         public void ReturnBookFromUser(Book book, Reader reader)
         {
             reader.BooksInReadingIds.Remove(book._Id);
+            book.Reader_ID = Guid.Empty;
+            book.IsOnUse = false;
             RefreshReadersJson();
+            RefreshBooksJson();
         }
     }
 }

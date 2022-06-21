@@ -11,13 +11,13 @@ namespace final_project
         public AdminForm()
         {
             InitializeComponent();
-            RefreshBooksListBox();
-            RefreshReadersListBox();
+            //RefreshBooksListBox();
+            //RefreshReadersListBox();
         }
         private void FormLists_Load(object sender, EventArgs e)
         {
-            BooksListBox.DataSource = lib.BooksList.ToList();
-            ReadersBoxList.DataSource = lib.ReadersList.ToList();
+           BooksListBox.DataSource = lib.BooksList.ToList();
+           ReadersListBox.DataSource = lib.ReadersList.ToList();
         }
 
         private void RefreshBooksListBox()
@@ -26,7 +26,7 @@ namespace final_project
         }
         private void RefreshReadersListBox()
         {
-            ReadersBoxList.DataSource = lib.ReadersList.ToList();
+            ReadersListBox.DataSource = lib.ReadersList.ToList();
         }
         private void AddBookBtn_Click(object sender, EventArgs e)
         {
@@ -44,11 +44,11 @@ namespace final_project
             RefreshReadersListBox();
         }
 
-        private void ReadersBoxList_SelectedIndexChanged(object sender, EventArgs e)
+        private void ReadersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ReadersBoxList.SelectedItem != null)
+            if (ReadersListBox.SelectedItem != null)
             {
-                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
+                Reader reader = ((Reader)ReadersListBox.SelectedItem);
                 UserNameInput.Text = reader.Name;
                 UserPassInput.Text = reader.Pass;
                 IsAdminCheckBox.Checked = reader.IsAdmin;
@@ -64,10 +64,12 @@ namespace final_project
                 Book book = ((Book)BooksListBox.SelectedItem);
                 BookTitleInput.Text = book.Title;
                 BookAuthorInput.Text = book.Author;
+
+                ShowBookReaders(book);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void RemoveBookBtn_Click(object sender, EventArgs e)
         {
             if (BooksListBox.SelectedItem != null)
             {
@@ -78,7 +80,7 @@ namespace final_project
             }
         }
 
-        private void UpdateBook_Click(object sender, EventArgs e)
+        private void EditBookBtn_Click(object sender, EventArgs e)
         {
             if (BooksListBox.SelectedItem != null)
             {
@@ -91,22 +93,22 @@ namespace final_project
         }
 
   
-        private void RemoveReader_Click(object sender, EventArgs e)
+        private void RemoveReaderBtn_Click(object sender, EventArgs e)
         {
-            if (ReadersBoxList.SelectedItem != null)
+            if (ReadersListBox.SelectedItem != null)
             {
-                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
+                Reader reader = ((Reader)ReadersListBox.SelectedItem);
                 Guid id = reader._Id;
                 lib.RemoveReader(id);
                 RefreshReadersListBox();
             }
         }
 
-        private void ChangeUserBtn_Click(object sender, EventArgs e)
+        private void EditUserBtn_Click(object sender, EventArgs e)
         {
-            if (ReadersBoxList.SelectedItem != null)
+            if (ReadersListBox.SelectedItem != null)
             {
-                Reader reader = ((Reader)ReadersBoxList.SelectedItem);
+                Reader reader = ((Reader)ReadersListBox.SelectedItem);
                 reader.Name = UserNameInput.Text;
                 reader.Pass = UserPassInput.Text;
                 reader.IsAdmin = IsAdminCheckBox.Checked;
@@ -125,6 +127,34 @@ namespace final_project
                 userBookList.Add(lib.GetBookById(id));
             }
             UserBooksLiistBox.DataSource = userBookList.ToList();
+        }
+
+        private void ShowBookReaders(Book book)
+        {
+            if (book.IsOnUse == true)
+            {
+                List<Reader> bookReaders = new List<Reader>();
+                bookReaders.Add(lib.GetUserById(book.Reader_ID));
+
+                BookReaderListBox.DataSource = bookReaders.ToList();
+            }
+            else
+            {
+                List<string> resString = new List<string> { "Книга вільна" };
+                BookReaderListBox.DataSource = resString;
+            }
+        }
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            AuthForm authForm = new AuthForm();
+            authForm.Show();
+            this.Close();
+        }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

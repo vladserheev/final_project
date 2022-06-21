@@ -32,13 +32,13 @@
             this.AddBookBtn = new System.Windows.Forms.Button();
             this.BookTitleInput = new System.Windows.Forms.TextBox();
             this.BooksListBox = new System.Windows.Forms.ListBox();
-            this.ReadersBoxList = new System.Windows.Forms.ListBox();
+            this.ReadersListBox = new System.Windows.Forms.ListBox();
             this.UserNameInput = new System.Windows.Forms.TextBox();
             this.UserPassInput = new System.Windows.Forms.TextBox();
             this.ChangeUserBtn = new System.Windows.Forms.Button();
-            this.RemoveBook = new System.Windows.Forms.Button();
-            this.UpdateBook = new System.Windows.Forms.Button();
-            this.RemoveReader = new System.Windows.Forms.Button();
+            this.RemoveBookBtn = new System.Windows.Forms.Button();
+            this.ChangeBookBtn = new System.Windows.Forms.Button();
+            this.RemoveReaderBtn = new System.Windows.Forms.Button();
             this.AddReaderBtn = new System.Windows.Forms.Button();
             this.UsresListBoxStatus = new System.Windows.Forms.Label();
             this.BooksListBoxStatusL = new System.Windows.Forms.Label();
@@ -50,11 +50,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UserBooksLiistBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.LogOutBtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.BookReaderListBox = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BookAuthorInput
             // 
-            this.BookAuthorInput.Location = new System.Drawing.Point(25, 345);
+            this.BookAuthorInput.Location = new System.Drawing.Point(25, 355);
             this.BookAuthorInput.Name = "BookAuthorInput";
             this.BookAuthorInput.Size = new System.Drawing.Size(138, 22);
             this.BookAuthorInput.TabIndex = 2;
@@ -62,7 +69,7 @@
             // 
             // AddBookBtn
             // 
-            this.AddBookBtn.Location = new System.Drawing.Point(25, 389);
+            this.AddBookBtn.Location = new System.Drawing.Point(25, 399);
             this.AddBookBtn.Name = "AddBookBtn";
             this.AddBookBtn.Size = new System.Drawing.Size(75, 23);
             this.AddBookBtn.TabIndex = 3;
@@ -72,7 +79,7 @@
             // 
             // BookTitleInput
             // 
-            this.BookTitleInput.Location = new System.Drawing.Point(25, 305);
+            this.BookTitleInput.Location = new System.Drawing.Point(25, 304);
             this.BookTitleInput.Name = "BookTitleInput";
             this.BookTitleInput.Size = new System.Drawing.Size(138, 22);
             this.BookTitleInput.TabIndex = 4;
@@ -88,19 +95,19 @@
             this.BooksListBox.TabIndex = 7;
             this.BooksListBox.SelectedIndexChanged += new System.EventHandler(this.BooksListBox_SelectedIndexChanged);
             // 
-            // ReadersBoxList
+            // ReadersListBox
             // 
-            this.ReadersBoxList.FormattingEnabled = true;
-            this.ReadersBoxList.ItemHeight = 16;
-            this.ReadersBoxList.Location = new System.Drawing.Point(395, 138);
-            this.ReadersBoxList.Name = "ReadersBoxList";
-            this.ReadersBoxList.Size = new System.Drawing.Size(283, 132);
-            this.ReadersBoxList.TabIndex = 8;
-            this.ReadersBoxList.SelectedIndexChanged += new System.EventHandler(this.ReadersBoxList_SelectedIndexChanged);
+            this.ReadersListBox.FormattingEnabled = true;
+            this.ReadersListBox.ItemHeight = 16;
+            this.ReadersListBox.Location = new System.Drawing.Point(675, 138);
+            this.ReadersListBox.Name = "ReadersListBox";
+            this.ReadersListBox.Size = new System.Drawing.Size(283, 132);
+            this.ReadersListBox.TabIndex = 8;
+            this.ReadersListBox.SelectedIndexChanged += new System.EventHandler(this.ReadersListBox_SelectedIndexChanged);
             // 
             // UserNameInput
             // 
-            this.UserNameInput.Location = new System.Drawing.Point(395, 305);
+            this.UserNameInput.Location = new System.Drawing.Point(675, 305);
             this.UserNameInput.Name = "UserNameInput";
             this.UserNameInput.Size = new System.Drawing.Size(100, 22);
             this.UserNameInput.TabIndex = 9;
@@ -108,7 +115,7 @@
             // 
             // UserPassInput
             // 
-            this.UserPassInput.Location = new System.Drawing.Point(395, 346);
+            this.UserPassInput.Location = new System.Drawing.Point(675, 355);
             this.UserPassInput.Name = "UserPassInput";
             this.UserPassInput.Size = new System.Drawing.Size(100, 22);
             this.UserPassInput.TabIndex = 10;
@@ -116,47 +123,47 @@
             // 
             // ChangeUserBtn
             // 
-            this.ChangeUserBtn.Location = new System.Drawing.Point(525, 345);
+            this.ChangeUserBtn.Location = new System.Drawing.Point(805, 354);
             this.ChangeUserBtn.Name = "ChangeUserBtn";
             this.ChangeUserBtn.Size = new System.Drawing.Size(100, 23);
             this.ChangeUserBtn.TabIndex = 11;
             this.ChangeUserBtn.Text = "Змінити";
             this.ChangeUserBtn.UseVisualStyleBackColor = true;
-            this.ChangeUserBtn.Click += new System.EventHandler(this.ChangeUserBtn_Click);
+            this.ChangeUserBtn.Click += new System.EventHandler(this.EditUserBtn_Click);
             // 
-            // RemoveBook
+            // RemoveBookBtn
             // 
-            this.RemoveBook.Location = new System.Drawing.Point(193, 304);
-            this.RemoveBook.Name = "RemoveBook";
-            this.RemoveBook.Size = new System.Drawing.Size(96, 23);
-            this.RemoveBook.TabIndex = 12;
-            this.RemoveBook.Text = "Видалити";
-            this.RemoveBook.UseVisualStyleBackColor = true;
-            this.RemoveBook.Click += new System.EventHandler(this.button1_Click);
+            this.RemoveBookBtn.Location = new System.Drawing.Point(193, 303);
+            this.RemoveBookBtn.Name = "RemoveBookBtn";
+            this.RemoveBookBtn.Size = new System.Drawing.Size(96, 23);
+            this.RemoveBookBtn.TabIndex = 12;
+            this.RemoveBookBtn.Text = "Видалити";
+            this.RemoveBookBtn.UseVisualStyleBackColor = true;
+            this.RemoveBookBtn.Click += new System.EventHandler(this.RemoveBookBtn_Click);
             // 
-            // UpdateBook
+            // EditBookBtn
             // 
-            this.UpdateBook.Location = new System.Drawing.Point(193, 344);
-            this.UpdateBook.Name = "UpdateBook";
-            this.UpdateBook.Size = new System.Drawing.Size(96, 23);
-            this.UpdateBook.TabIndex = 13;
-            this.UpdateBook.Text = "Змінити";
-            this.UpdateBook.UseVisualStyleBackColor = true;
-            this.UpdateBook.Click += new System.EventHandler(this.UpdateBook_Click);
+            this.ChangeBookBtn.Location = new System.Drawing.Point(193, 354);
+            this.ChangeBookBtn.Name = "EditBookBtn";
+            this.ChangeBookBtn.Size = new System.Drawing.Size(96, 23);
+            this.ChangeBookBtn.TabIndex = 13;
+            this.ChangeBookBtn.Text = "Змінити";
+            this.ChangeBookBtn.UseVisualStyleBackColor = true;
+            this.ChangeBookBtn.Click += new System.EventHandler(this.EditBookBtn_Click);
             // 
-            // RemoveReader
+            // RemoveReaderBtn
             // 
-            this.RemoveReader.Location = new System.Drawing.Point(525, 304);
-            this.RemoveReader.Name = "RemoveReader";
-            this.RemoveReader.Size = new System.Drawing.Size(100, 23);
-            this.RemoveReader.TabIndex = 14;
-            this.RemoveReader.Text = "Видалити";
-            this.RemoveReader.UseVisualStyleBackColor = true;
-            this.RemoveReader.Click += new System.EventHandler(this.RemoveReader_Click);
+            this.RemoveReaderBtn.Location = new System.Drawing.Point(805, 304);
+            this.RemoveReaderBtn.Name = "RemoveReaderBtn";
+            this.RemoveReaderBtn.Size = new System.Drawing.Size(100, 23);
+            this.RemoveReaderBtn.TabIndex = 14;
+            this.RemoveReaderBtn.Text = "Видалити";
+            this.RemoveReaderBtn.UseVisualStyleBackColor = true;
+            this.RemoveReaderBtn.Click += new System.EventHandler(this.RemoveReaderBtn_Click);
             // 
             // AddReaderBtn
             // 
-            this.AddReaderBtn.Location = new System.Drawing.Point(395, 425);
+            this.AddReaderBtn.Location = new System.Drawing.Point(675, 419);
             this.AddReaderBtn.Name = "AddReaderBtn";
             this.AddReaderBtn.Size = new System.Drawing.Size(75, 23);
             this.AddReaderBtn.TabIndex = 15;
@@ -167,7 +174,7 @@
             // UsresListBoxStatus
             // 
             this.UsresListBoxStatus.AutoSize = true;
-            this.UsresListBoxStatus.Location = new System.Drawing.Point(392, 119);
+            this.UsresListBoxStatus.Location = new System.Drawing.Point(672, 119);
             this.UsresListBoxStatus.Name = "UsresListBoxStatus";
             this.UsresListBoxStatus.Size = new System.Drawing.Size(109, 16);
             this.UsresListBoxStatus.TabIndex = 16;
@@ -184,7 +191,7 @@
             // 
             // ShowAllUsers
             // 
-            this.ShowAllUsers.Location = new System.Drawing.Point(395, 82);
+            this.ShowAllUsers.Location = new System.Drawing.Point(675, 82);
             this.ShowAllUsers.Name = "ShowAllUsers";
             this.ShowAllUsers.Size = new System.Drawing.Size(75, 23);
             this.ShowAllUsers.TabIndex = 18;
@@ -204,7 +211,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(392, 51);
+            this.label3.Location = new System.Drawing.Point(672, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 20;
@@ -223,7 +230,7 @@
             // IsAdminCheckBox
             // 
             this.IsAdminCheckBox.AutoSize = true;
-            this.IsAdminCheckBox.Location = new System.Drawing.Point(395, 374);
+            this.IsAdminCheckBox.Location = new System.Drawing.Point(675, 383);
             this.IsAdminCheckBox.Name = "IsAdminCheckBox";
             this.IsAdminCheckBox.Size = new System.Drawing.Size(66, 20);
             this.IsAdminCheckBox.TabIndex = 22;
@@ -246,7 +253,7 @@
             this.UserBooksLiistBox.ItemHeight = 16;
             this.UserBooksLiistBox.Items.AddRange(new object[] {
             "54545"});
-            this.UserBooksLiistBox.Location = new System.Drawing.Point(758, 138);
+            this.UserBooksLiistBox.Location = new System.Drawing.Point(1004, 138);
             this.UserBooksLiistBox.Name = "UserBooksLiistBox";
             this.UserBooksLiistBox.Size = new System.Drawing.Size(254, 132);
             this.UserBooksLiistBox.TabIndex = 24;
@@ -254,17 +261,88 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(755, 119);
+            this.label2.Location = new System.Drawing.Point(1001, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 16);
             this.label2.TabIndex = 25;
             this.label2.Text = "Книги користувача";
             // 
+            // LogOutBtn
+            // 
+            this.LogOutBtn.Location = new System.Drawing.Point(190, 9);
+            this.LogOutBtn.Name = "LogOutBtn";
+            this.LogOutBtn.Size = new System.Drawing.Size(84, 30);
+            this.LogOutBtn.TabIndex = 26;
+            this.LogOutBtn.Text = "Вийти";
+            this.LogOutBtn.UseVisualStyleBackColor = true;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 336);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Автор";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 285);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 16);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Назва:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(673, 286);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 16);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Ім\'я";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(673, 339);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Пароль";
+            // 
+            // BookReaderListBox
+            // 
+            this.BookReaderListBox.FormattingEnabled = true;
+            this.BookReaderListBox.ItemHeight = 16;
+            this.BookReaderListBox.Location = new System.Drawing.Point(363, 138);
+            this.BookReaderListBox.Name = "BookReaderListBox";
+            this.BookReaderListBox.Size = new System.Drawing.Size(250, 132);
+            this.BookReaderListBox.TabIndex = 31;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(360, 119);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 16);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Читають книгу:";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 551);
+            this.ClientSize = new System.Drawing.Size(1372, 661);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.BookReaderListBox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LogOutBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.UserBooksLiistBox);
             this.Controls.Add(this.label1);
@@ -276,19 +354,20 @@
             this.Controls.Add(this.BooksListBoxStatusL);
             this.Controls.Add(this.UsresListBoxStatus);
             this.Controls.Add(this.AddReaderBtn);
-            this.Controls.Add(this.RemoveReader);
-            this.Controls.Add(this.UpdateBook);
-            this.Controls.Add(this.RemoveBook);
+            this.Controls.Add(this.RemoveReaderBtn);
+            this.Controls.Add(this.ChangeBookBtn);
+            this.Controls.Add(this.RemoveBookBtn);
             this.Controls.Add(this.ChangeUserBtn);
             this.Controls.Add(this.UserPassInput);
             this.Controls.Add(this.UserNameInput);
-            this.Controls.Add(this.ReadersBoxList);
+            this.Controls.Add(this.ReadersListBox);
             this.Controls.Add(this.BooksListBox);
             this.Controls.Add(this.BookTitleInput);
             this.Controls.Add(this.AddBookBtn);
             this.Controls.Add(this.BookAuthorInput);
             this.Name = "AdminForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,13 +378,13 @@
         private System.Windows.Forms.Button AddBookBtn;
         private System.Windows.Forms.TextBox BookTitleInput;
         private System.Windows.Forms.ListBox BooksListBox;
-        private System.Windows.Forms.ListBox ReadersBoxList;
+        private System.Windows.Forms.ListBox ReadersListBox;
         private System.Windows.Forms.TextBox UserNameInput;
         private System.Windows.Forms.TextBox UserPassInput;
         private System.Windows.Forms.Button ChangeUserBtn;
-        private System.Windows.Forms.Button RemoveBook;
-        private System.Windows.Forms.Button UpdateBook;
-        private System.Windows.Forms.Button RemoveReader;
+        private System.Windows.Forms.Button RemoveBookBtn;
+        private System.Windows.Forms.Button ChangeBookBtn;
+        private System.Windows.Forms.Button RemoveReaderBtn;
         private System.Windows.Forms.Button AddReaderBtn;
         private System.Windows.Forms.Label UsresListBoxStatus;
         private System.Windows.Forms.Label BooksListBoxStatusL;
@@ -317,6 +396,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox UserBooksLiistBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button LogOutBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox BookReaderListBox;
+        private System.Windows.Forms.Label label9;
     }
 }
 

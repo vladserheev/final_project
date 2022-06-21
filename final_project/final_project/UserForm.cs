@@ -66,17 +66,18 @@ namespace final_project
             RefreshBooksList(1);
         }
 
-        private void UserPassL_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SerchBtn_Click(object sender, EventArgs e)
         {
             string searchString = SearchInput.Text;
             List<Book> searchResults = lib.BooksList.FindAll(x => x.Title.Contains(searchString));
-            //RefreshBooksList(0);
             BooksListBox.DataSource = searchResults;
+        }
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            AuthForm authForm = new AuthForm();
+            authForm.Show();
+            this.Close();
         }
     }
 }

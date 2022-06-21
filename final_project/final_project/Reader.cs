@@ -29,7 +29,12 @@ namespace final_project
         }
         public override string ToString()
         {
-            return $"{Name} isAdmin:{IsAdmin}";
+            return $"{Name} {Pass} {(IsAdmin ? "Admin" : "")}";
+        }
+
+        ~Reader()
+        {
+            Console.WriteLine("Reader deleted!");
         }
     }
 }

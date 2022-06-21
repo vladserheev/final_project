@@ -7,8 +7,12 @@ namespace final_project
         public string Title { get; set; }
 
         public string Author { get; set; }
-       
+
         public Guid _Id { get; set; }
+
+        public Guid Reader_ID {get; set;}
+
+        public bool IsOnUse = false;
         public Book()
         {
             Console.WriteLine("Book created from json");
@@ -23,7 +27,12 @@ namespace final_project
 
         public override string ToString()
         {
-            return Title + " " + Author;
+            return $"{Title}  {Author}" ;
+        }
+
+        ~Book()
+        {
+            Console.WriteLine("Book deleted");
         }
     }
 }

@@ -34,6 +34,8 @@
             this.resLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RegBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UserPassInput
@@ -52,7 +54,7 @@
             // 
             // SignInBtn
             // 
-            this.SignInBtn.Location = new System.Drawing.Point(330, 243);
+            this.SignInBtn.Location = new System.Drawing.Point(330, 241);
             this.SignInBtn.Name = "SignInBtn";
             this.SignInBtn.Size = new System.Drawing.Size(75, 23);
             this.SignInBtn.TabIndex = 2;
@@ -63,11 +65,10 @@
             // resLabel
             // 
             this.resLabel.AutoSize = true;
-            this.resLabel.Location = new System.Drawing.Point(348, 319);
+            this.resLabel.Location = new System.Drawing.Point(278, 321);
             this.resLabel.Name = "resLabel";
-            this.resLabel.Size = new System.Drawing.Size(44, 16);
+            this.resLabel.Size = new System.Drawing.Size(0, 16);
             this.resLabel.TabIndex = 3;
-            this.resLabel.Text = "label1";
             // 
             // label1
             // 
@@ -87,13 +88,33 @@
             this.RegBtn.TabIndex = 5;
             this.RegBtn.Text = "Зареєструватися";
             this.RegBtn.UseVisualStyleBackColor = true;
-            this.RegBtn.Click += new System.EventHandler(this.RegBtn_Click_1);
+            this.RegBtn.Click += new System.EventHandler(this.RegBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(295, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Пароль:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(295, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Ім\'я:";
             // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.RegBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resLabel);
@@ -115,5 +136,7 @@
         private System.Windows.Forms.Label resLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RegBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

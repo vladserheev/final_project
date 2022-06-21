@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace final_project
@@ -26,7 +19,7 @@ namespace final_project
             Reader reader = lib.SignIn(userName, userPass);
             if (reader == null)
             {
-                resLabel.Text = "Невдалося ввійти";
+                resLabel.Text = "Невірний логін або пароль";
             }
             else if(reader.IsAdmin == true) // Перевірка чи коримстувач адмін
             {
@@ -40,16 +33,12 @@ namespace final_project
 
         private void RegBtn_Click(object sender, EventArgs e)
         {
-            
-        }
-        private void RegBtn_Click_1(object sender, EventArgs e)
-        {
             string userName = UserNameInput.Text;
             string userPass = UserPassInput.Text;
             Guid id = lib.AddNewUser(userName, userPass, false);
             OpenUserForm(id);
         }
-
+       
         private void OpenUserForm(Guid id)
         {
             UserForm userForm = new UserForm(id);
