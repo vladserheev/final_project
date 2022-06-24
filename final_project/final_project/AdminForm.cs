@@ -8,6 +8,7 @@ namespace final_project
     public partial class AdminForm : Form
     {
         Library lib = new Library();
+        List<ComboBox> comboBoxes = new List<ComboBox>();
         public AdminForm()
         {
             InitializeComponent();
@@ -43,11 +44,14 @@ namespace final_project
         {
             if (AuthorsListBox.SelectedItem != null)
             {
+                List<Guid> authors_Ids = new List<Guid>();
+                authors_Ids = GetAuthorsIds(authors_Ids);
+                
                 Author author = ((Author)AuthorsListBox.SelectedItem);
                 string title = BookTitleInput.Text;
                 string author1 = BookAuthorInput.Text;
                 
-                lib.AddNewBook(title, author1, author._Id);
+                lib.AddNewBook(title, author1, author._Id, authors_Ids);
                 RefreshBooksListBox();
             }
         }
@@ -236,7 +240,6 @@ namespace final_project
 
         private void CreateComboBoxes(int count)
         {
-            List<ComboBox> comboBoxes = new List<ComboBox>();
             for (int i = 0; i < count; i++)
             {
                 Console.WriteLine("Combox");
@@ -245,7 +248,6 @@ namespace final_project
                 comboBoxes.Add(combox);
             }
         }
-
         public ComboBox CreateComboBox(int i)
         {
             ComboBox combox = new ComboBox();
@@ -257,7 +259,7 @@ namespace final_project
 
         public void Combox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label11.Text = "china";
+            
         }
 
         public void LogOutBtn_Click(object sender, EventArgs e)
@@ -265,6 +267,16 @@ namespace final_project
             AuthForm authForm = new AuthForm();
             authForm.Show();
             this.Close();
+        }
+
+        public List<Guid> GetAuthorsIds(List<Guid> authorsId)
+        {
+            foreach(ComboBox combox in comboBoxes)
+            {
+                Author author = ((Author)combox.SelectedItem);
+                authorsId.Add(author._Id);
+            }
+            return authorsId;
         }
 
         public void AddAuthorBtn_Click_1(object sender, EventArgs e)

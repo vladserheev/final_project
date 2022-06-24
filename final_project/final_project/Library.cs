@@ -40,9 +40,9 @@ namespace final_project
                     AuthorsList = JsonConvert.DeserializeObject<List<Author>>(json);
                 }
         }
-        public void AddNewBook(string title, string author, Guid authorId)
+        public void AddNewBook(string title, string author, Guid authorId, List<Guid> authors_ids)
         {
-            Book book = new Book(title, author, authorId);
+            Book book = new Book(title, author, authorId, authors_ids);
             BooksList.Add(book);
             RefreshBooksJson();
         }
