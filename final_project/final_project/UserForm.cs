@@ -29,8 +29,10 @@ namespace final_project
             else if(type == 1)
             {
                 List<Book> Userbooks = new List<Book>();
-                foreach(Guid id in user.BooksInReadingIds)
+                Console.WriteLine("CHINAAAAAA");
+                foreach(Guid id in user.Books_Ids)
                 {
+                    Console.WriteLine(id);
                     Userbooks.Add(lib.BooksList.Find(x => x._Id == id));
                 }
                 UserPassL.Text = "My books";

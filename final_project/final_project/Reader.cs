@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace final_project
 {
-    internal class Reader
+    internal class Reader : Base<Reader>
     {
         public string Name { get; set; }
         public bool IsReading { get; set; }
@@ -11,7 +11,7 @@ namespace final_project
         public Guid _Id { get; set; }
         public string Pass { get; set; }
         public bool IsAdmin { get; set; }
-        public List<Guid> BooksInReadingIds { get; set; }
+        public List<Guid> Books_Ids { get; set; }
 
         public Reader()
         {
@@ -23,8 +23,8 @@ namespace final_project
             Name = name;
             Pass = pass;
             IsAdmin = isAdmin;
-            BooksInReadingIds = new List<Guid>();
-            //BooksInReadingIds.Add(Guid.NewGuid());
+            Books_Ids = new List<Guid>();
+            Books_Ids.Add(Guid.NewGuid());
             _Id = Guid.NewGuid();
         }
         public override string ToString()

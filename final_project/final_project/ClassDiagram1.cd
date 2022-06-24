@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="final_project.AdminForm">
-    <Position X="3.5" Y="2.25" Width="2.75" />
+    <Position X="4.25" Y="2.25" Width="2.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AFICAAEAQSohABAEIoCAkAACIAIAAACUIoQACCAZgIA=</HashCode>
+      <HashCode>lFICAAMAQSojADAEIoCAkAACIBIIEADUIsQBKCCZgIA=</HashCode>
       <FileName>AdminForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -18,6 +19,7 @@
     <Position X="7.75" Y="2.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AIAAEAAAQCAgABAAgACAgAACAAAAAAASAAAAAAAABAA=</HashCode>
@@ -25,9 +27,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="final_project.UserForm">
-    <Position X="12.25" Y="2" Width="2.5" />
+    <Position X="11.25" Y="2.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAIAAAEAACgwkBAAQAiAAgACBCBQAAAAAQAAAAIACQA=</HashCode>
@@ -35,24 +38,57 @@
     </TypeIdentifier>
   </Class>
   <Class Name="final_project.Library">
-    <Position X="17.25" Y="2.5" Width="2.5" />
+    <Position X="13.25" Y="5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>ABAAgACIQBAAAQAAAQIAAEAAAAAAgAAAAAAEAQAAABA=</HashCode>
+      <HashCode>ABAAggCIQBAAAQAAAQIAAEAAAAAAgAAAAAAMAQAAABA=</HashCode>
       <FileName>Library.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="final_project.Reader">
-    <Position X="22.5" Y="2.75" Width="2.25" />
+    <Position X="10.5" Y="5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAQAAAAEAAAAAAQACAAAAAAACAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAAAAAAAQAAAAEAAAAAAQACAAAAAAACAQAAAAEAAA=</HashCode>
       <FileName>Reader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="final_project.Book">
-    <Position X="21" Y="7" Width="2.25" />
+    <Position X="5.25" Y="5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAFAAAAAAAAAAEAEgAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAFAAAAAAAAAAEAEgAAAAAAAAAAAAACAAAAAAAAEAAA=</HashCode>
       <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="final_project.Base&lt;T&gt;" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="final_project.Author">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="final_project.AuthorBook">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>AuthorBook.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

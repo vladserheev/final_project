@@ -12,8 +12,8 @@ namespace final_project
 {
     public class Base<T> where T : Base<T>
     {
-        public static Dictionary<Guid, T> Items = new Dictionary<Guid, T>();
-
+        //public static Dictionary<Guid, T> Items = new Dictionary<Guid, T>();
+        public static List<T> Items = new List<T>();
         public Guid Id { get; private set; }
 
         public Base()

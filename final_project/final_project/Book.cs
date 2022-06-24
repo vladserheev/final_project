@@ -13,15 +13,17 @@ namespace final_project
         public Guid Reader_ID {get; set;}
 
         public bool IsOnUse = false;
+        public Guid Author_Id { get; set; }
         public Book()
         {
             Console.WriteLine("Book created from json");
         }
-        public Book(string title, string author)
+        public Book(string title, string author, Guid authorId)
         {
             Console.WriteLine("BookCreated");
             Title = title;
             Author = author; 
+            Author_Id = authorId;
             _Id = Guid.NewGuid();
         }
 
@@ -29,7 +31,6 @@ namespace final_project
         {
             return $"{Title}  {Author}" ;
         }
-
         ~Book()
         {
             Console.WriteLine("Book deleted");

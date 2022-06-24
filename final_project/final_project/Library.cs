@@ -9,6 +9,7 @@ namespace final_project
     {
         public List<Book> BooksList;
         public List<Reader> ReadersList;
+        public List<Author> AuthorsList;
 
         public Library()
         {
@@ -17,9 +18,6 @@ namespace final_project
        
         public void BaseFirstInitialisation()
         {
-            //throw new StackOverflowException();
-            try
-            {
                 Console.WriteLine("first initalization");
                 using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/booksDb.json"))
                 {
@@ -30,15 +28,21 @@ namespace final_project
                 {
                     string json = r.ReadToEnd();
                     ReadersList = JsonConvert.DeserializeObject<List<Reader>>(json);
+                    Console.WriteLine(ReadersList[0].Name);
+                    if (ReadersList == null)
+                    {
+                        Console.WriteLine("shinnaaa");
+                    }
                 }
-            }catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/authorsDb.json"))
+                {
+                    string json = r.ReadToEnd();
+                    AuthorsList = JsonConvert.DeserializeObject<List<Author>>(json);
+                }
         }
-        public void AddNewBook(string title, string author)
+        public void AddNewBook(string title, string author, Guid authorId)
         {
-            Book book = new Book(title, author);
+            Book book = new Book(title, author, authorId);
             BooksList.Add(book);
             RefreshBooksJson();
         }
@@ -50,6 +54,14 @@ namespace final_project
             RefreshReadersJson();
             return reader._Id;
         }
+        public Guid AddNewAuthor(string name)
+        {
+            Author author = new Author(name);
+            AuthorsList.Add(author);
+            RefreshAuthorsJson();
+            return author._Id;
+        }
+
         public bool RemoveBook(Guid id)
         {
             try
@@ -58,6 +70,21 @@ namespace final_project
                 RefreshBooksJson();
                 return true;
             }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool RemoveAuthor(Guid id)
+        {
+            try
+            {
+                AuthorsList.Remove(AuthorsList.Find(b => b._Id == id));
+                RefreshAuthorsJson();
+                return true;
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
@@ -106,8 +133,24 @@ namespace final_project
             }
         }
 
+        public bool RefreshAuthorsJson()
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(AuthorsList.ToArray());
+                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/authorsDb.json", json);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public Reader SignIn(string username, string password)
         {
+            Console.WriteLine(ReadersList[0].Name);
             Reader reader = ReadersList.Find(x => x.Name == username && x.Pass == password);
             if (reader == null)
             {
@@ -134,7 +177,7 @@ namespace final_project
         public void GiveBookToUser(Book book, Reader reader)
         {
             Console.WriteLine("give book");
-            reader.BooksInReadingIds.Add(book._Id);
+            reader.Books_Ids.Add(book._Id);
             book.Reader_ID = reader._Id;
             book.IsOnUse = true;
             RefreshReadersJson();
@@ -142,7 +185,7 @@ namespace final_project
         }
         public void ReturnBookFromUser(Book book, Reader reader)
         {
-            reader.BooksInReadingIds.Remove(book._Id);
+            reader.Books_Ids.Remove(book._Id);
             book.Reader_ID = Guid.Empty;
             book.IsOnUse = false;
             RefreshReadersJson();

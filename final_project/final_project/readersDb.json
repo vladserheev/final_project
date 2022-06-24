@@ -1,1 +1,20 @@
-[{"Name":"2","IsReading":false,"_Id":"41b247c3-b9fb-4bf5-a619-61fd6e47c3ca","Pass":"2","IsAdmin":true,"BooksInReadingIds":[]},{"Name":"Іван Петренко","IsReading":false,"_Id":"92665f0b-c2bc-44f9-87bb-4b60cb7ba916","Pass":"1234","IsAdmin":false,"BooksInReadingIds":[]},{"Name":"Володимир Кочерга","IsReading":false,"_Id":"d48b55b7-757b-4efd-a3f7-2e7a709a98ce","Pass":"1234","IsAdmin":false,"BooksInReadingIds":[]}]
+[
+  {
+    "Name": "2",
+    "_Id": "41b247c3-b9fb-4bf5-a619-61fd6e47c3ca",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Books_Ids": [ "00000000-0000-0000-0000-000000000000" ],
+    "IsReading": false,
+    "Pass": "2",
+    "IsAdmin": true
+  },
+  {
+    "Name": "4",
+    "_Id": "0a962b90-b164-46d9-abdf-0a9b7a85df29",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Books_Ids": [ "3cccc811-c1e3-4e5f-894a-53fe05ec6161", "66ce99fa-4258-455a-b711-1cd6bc677d40" ],
+    "IsReading": false,
+    "Pass": "4",
+    "IsAdmin": false
+  }
+]
