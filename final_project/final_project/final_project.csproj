@@ -146,6 +146,7 @@
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="authorBook.json" />
     <None Include="ClassDiagram1.cd" />
     <None Include="booksDb.json" />
     <None Include="authorsDb.json" />

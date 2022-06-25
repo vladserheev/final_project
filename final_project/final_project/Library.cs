@@ -10,12 +10,11 @@ namespace final_project
         public List<Book> BooksList;
         public List<Reader> ReadersList;
         public List<Author> AuthorsList;
-
+        public List<AuthorBook> AuthorBookList;
         public Library()
         {
             BaseFirstInitialisation();
         }
-       
         public void BaseFirstInitialisation()
         {
                 Console.WriteLine("first initalization");
@@ -31,7 +30,7 @@ namespace final_project
                     Console.WriteLine(ReadersList[0].Name);
                     if (ReadersList == null)
                     {
-                        Console.WriteLine("shinnaaa");
+                        Console.WriteLine("Readers list num");
                     }
                 }
                 using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/authorsDb.json"))
@@ -39,10 +38,19 @@ namespace final_project
                     string json = r.ReadToEnd();
                     AuthorsList = JsonConvert.DeserializeObject<List<Author>>(json);
                 }
+
+                using (StreamReader r = new StreamReader("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/authorBook.json"))
+                {
+                    string json = r.ReadToEnd();
+                    AuthorBookList = JsonConvert.DeserializeObject<List<AuthorBook>>(json);
+                }
         }
         public void AddNewBook(string title, string author, Guid authorId, List<Guid> authors_ids)
         {
             Book book = new Book(title, author, authorId, authors_ids);
+            AddNewAuthorBook(book._Id, authors_ids);
+            RefreshAuthorBook();
+            //AuthorBook authorBook = new AuthorBook(book._Id, )
             BooksList.Add(book);
             RefreshBooksJson();
         }
@@ -148,6 +156,21 @@ namespace final_project
             }
         }
 
+        public bool RefreshAuthorBook()
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(AuthorBookList.ToArray());
+                System.IO.File.WriteAllText("C:/Users/Windows 10/Documents/2 семестр/ОП/final_project/final_project/final_project/authorBook.json", json);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public Reader SignIn(string username, string password)
         {
             Console.WriteLine(ReadersList[0].Name);
@@ -190,6 +213,14 @@ namespace final_project
             book.IsOnUse = false;
             RefreshReadersJson();
             RefreshBooksJson();
+        }
+
+        public void AddNewAuthorBook(Guid bookId, List<Guid> authorsId)
+        {
+            foreach(Guid id in authorsId)
+            {
+                AuthorBookList.Add(new AuthorBook(bookId, id));
+            }
         }
     }
 }
