@@ -68,14 +68,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.AuthorsCountStatusL = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BookAuthorInput
             // 
-            this.BookAuthorInput.Location = new System.Drawing.Point(390, 717);
+            this.BookAuthorInput.Location = new System.Drawing.Point(405, 513);
             this.BookAuthorInput.Name = "BookAuthorInput";
             this.BookAuthorInput.Size = new System.Drawing.Size(138, 22);
             this.BookAuthorInput.TabIndex = 2;
@@ -443,15 +441,6 @@
             this.label12.TabIndex = 51;
             this.label12.Text = "Автори";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(605, 754);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 16);
-            this.label10.TabIndex = 52;
-            this.label10.Text = "label10";
-            // 
             // AuthorsCountStatusL
             // 
             this.AuthorsCountStatusL.AutoSize = true;
@@ -460,23 +449,12 @@
             this.AuthorsCountStatusL.Size = new System.Drawing.Size(0, 16);
             this.AuthorsCountStatusL.TabIndex = 53;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(495, 632);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 16);
-            this.label14.TabIndex = 54;
-            this.label14.Text = "label14";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1372, 827);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.AuthorsCountStatusL);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -566,9 +544,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label AuthorsCountStatusL;
-        private System.Windows.Forms.Label label14;
     }
 }
 

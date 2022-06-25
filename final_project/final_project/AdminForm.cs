@@ -37,6 +37,10 @@ namespace final_project
         public void RefreshAuthorsListBox()
         {
             AuthorsListBox.DataSource = lib.AuthorsList.ToList();
+            foreach (ComboBox cb in comboBoxes)
+            {
+                cb.DataSource = lib.AuthorsList.ToList();
+            }
         }
 
         //Додавання, редагування та видалення книг, користувачів та авторів
@@ -66,7 +70,6 @@ namespace final_project
 
         public void AddAuthorBtn_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("ADD BOOK");
             string name = AuthorNameInput.Text;
             lib.AddNewAuthor(name);
             RefreshAuthorsListBox();

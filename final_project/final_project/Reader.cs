@@ -24,7 +24,7 @@ namespace final_project
             Pass = pass;
             IsAdmin = isAdmin;
             Books_Ids = new List<Guid>();
-            Books_Ids.Add(Guid.NewGuid());
+           // Books_Ids.Add(Guid.NewGuid());
             _Id = Guid.NewGuid();
         }
         public override string ToString()
