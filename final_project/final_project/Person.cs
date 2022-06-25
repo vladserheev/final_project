@@ -10,7 +10,5 @@ namespace final_project
     {
         public string Name;
         public Guid _Id = Guid.Empty;
-        public DateTime DateOfBirth = new DateTime();
-        public List<Guid> Books_Ids = new List<Guid>();
     }
 }

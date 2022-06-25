@@ -12,8 +12,8 @@ namespace final_project
         public AdminForm()
         {
             InitializeComponent();
-            RefreshBooksListBox();
-            RefreshReadersListBox();
+            RefreshBooksListBox(0);
+            RefreshReadersListBox(0);
             RefreshAuthorsListBox();
         }
         public void FormLists_Load(object sender, EventArgs e)
@@ -25,13 +25,30 @@ namespace final_project
 
         //Оновлення списків з книгами, користувачами та аторами
 
-        public void RefreshBooksListBox()
-        { 
-            BooksListBox.DataSource = lib.BooksList.ToList();
-        }
-        public void RefreshReadersListBox()
+        public void RefreshBooksListBox(int type)
         {
-            ReadersListBox.DataSource = lib.ReadersList.ToList();
+            if (type == 0)
+            {
+                BooksListBox.DataSource = lib.BooksList.ToList();
+            }else if(type == 1)
+            {
+                BooksListBox.DataSource = lib.BooksList.Where(x => x.IsOnUse == true).ToList();
+            }
+        }
+        public void RefreshReadersListBox(int type)
+        {
+            if (type == 0)
+            {
+                ReadersListBox.DataSource = lib.ReadersList.ToList();
+            }else if(type == 1)
+            {
+                ReadersListBox.DataSource = lib.ReadersList.Where(x => x.IsReading == true).ToList();
+            }
+        }
+
+        public void RefreshBookAuthorsListBox(Guid book_id)
+        {
+            BookAuthorsListBox.DataSource = lib.GetBookAuthors(book_id).ToList();
         }
 
         public void RefreshAuthorsListBox()
@@ -53,10 +70,9 @@ namespace final_project
                 
                 Author author = ((Author)AuthorsListBox.SelectedItem);
                 string title = BookTitleInput.Text;
-                string author1 = BookAuthorInput.Text;
                 
-                lib.AddNewBook(title, author1, author._Id, authors_Ids);
-                RefreshBooksListBox();
+                lib.AddNewBook(title, authors_Ids);
+                RefreshBooksListBox(0);
             }
         }
         public void AddReaderBtn_Click(object sender, EventArgs e)
@@ -65,7 +81,7 @@ namespace final_project
             string pass = UserPassInput.Text;
             bool isAdmin = IsAdminCheckBox.Checked;
             lib.AddNewUser(name, pass, isAdmin);
-            RefreshReadersListBox();
+            RefreshReadersListBox(0);
         }
 
         public void AddAuthorBtn_Click(object sender, EventArgs e)
@@ -84,7 +100,7 @@ namespace final_project
                 reader.Pass = UserPassInput.Text;
                 reader.IsAdmin = IsAdminCheckBox.Checked;
                 lib.RefreshReadersJson();
-                RefreshReadersListBox();
+                RefreshReadersListBox(0);
             }
         }
 
@@ -94,9 +110,9 @@ namespace final_project
             {
                 Book book = ((Book)BooksListBox.SelectedItem);
                 book.Title = BookTitleInput.Text;
-                book.Author = BookAuthorInput.Text;
+
                 lib.RefreshBooksJson();
-                RefreshBooksListBox();
+                RefreshBooksListBox(0);
             }
         }
 
@@ -106,7 +122,7 @@ namespace final_project
             {
                 Author author = ((Author)AuthorsListBox.SelectedItem);
                 author.Name = AuthorNameInput.Text;
-                //lib.RefreshReadersJson();
+
                 RefreshAuthorsListBox();
             }
         }
@@ -118,7 +134,7 @@ namespace final_project
                 Book book = ((Book)BooksListBox.SelectedItem);
                 Guid id = book._Id;
                 lib.RemoveBook(id);
-                RefreshBooksListBox();
+                RefreshBooksListBox(0);
             }
         }
 
@@ -129,7 +145,7 @@ namespace final_project
                 Reader reader = ((Reader)ReadersListBox.SelectedItem);
                 Guid id = reader._Id;
                 lib.RemoveReader(id);
-                RefreshReadersListBox();
+                RefreshReadersListBox(0);
             }
         }
 
@@ -166,8 +182,8 @@ namespace final_project
             {
                 Book book = ((Book)BooksListBox.SelectedItem);
                 BookTitleInput.Text = book.Title;
-                BookAuthorInput.Text = book.Author;
 
+                RefreshBookAuthorsListBox(book._Id);
                 ShowBookReader(book);
             }
         }
@@ -178,8 +194,6 @@ namespace final_project
             {
                 Author author = ((Author)AuthorsListBox.SelectedItem);
                 AuthorNameInput.Text = author.Name;
-
-                //BookAuthorNameInput.Text = author.Name;
             }
         }
 
@@ -213,17 +227,6 @@ namespace final_project
             }
         }
 
-        
-
-   
-
-        
-
-        private void AdminForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (AuthorsCountInput.Text == "")
@@ -254,7 +257,7 @@ namespace final_project
         public ComboBox CreateComboBox(int i)
         {
             ComboBox combox = new ComboBox();
-            combox.Location = new System.Drawing.Point(25, 342 + (i * 30));
+            combox.Location = new System.Drawing.Point(25, 340 + (i * 30));
             combox.DataSource = lib.AuthorsList.ToList();
             combox.SelectedIndexChanged += Combox_SelectedIndexChanged;
             return combox;
@@ -288,6 +291,26 @@ namespace final_project
             string name = AuthorNameInput.Text;
             lib.AddNewAuthor(name);
             RefreshAuthorsListBox();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RefreshReadersListBox(1);
+        }
+
+        private void ShowAllUsers_Click(object sender, EventArgs e)
+        {
+            RefreshReadersListBox(0);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            RefreshBooksListBox(1);
+        }
+
+        private void ShowAllbooks_Click(object sender, EventArgs e)
+        {
+            RefreshBooksListBox(0);
         }
     }
 }

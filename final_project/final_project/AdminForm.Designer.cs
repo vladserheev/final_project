@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BookAuthorInput = new System.Windows.Forms.TextBox();
             this.AddBookBtn = new System.Windows.Forms.Button();
             this.BookTitleInput = new System.Windows.Forms.TextBox();
             this.BooksListBox = new System.Windows.Forms.ListBox();
@@ -69,15 +68,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.AuthorsCountStatusL = new System.Windows.Forms.Label();
+            this.BookAuthorsListBox = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // BookAuthorInput
-            // 
-            this.BookAuthorInput.Location = new System.Drawing.Point(405, 513);
-            this.BookAuthorInput.Name = "BookAuthorInput";
-            this.BookAuthorInput.Size = new System.Drawing.Size(138, 22);
-            this.BookAuthorInput.TabIndex = 2;
-            this.BookAuthorInput.Text = "Ім\'я";
             // 
             // AddBookBtn
             // 
@@ -103,7 +96,7 @@
             this.BooksListBox.ItemHeight = 16;
             this.BooksListBox.Location = new System.Drawing.Point(25, 138);
             this.BooksListBox.Name = "BooksListBox";
-            this.BooksListBox.Size = new System.Drawing.Size(292, 132);
+            this.BooksListBox.Size = new System.Drawing.Size(301, 132);
             this.BooksListBox.TabIndex = 7;
             this.BooksListBox.SelectedIndexChanged += new System.EventHandler(this.BooksListBox_SelectedIndexChanged);
             // 
@@ -209,6 +202,7 @@
             this.ShowAllUsers.TabIndex = 18;
             this.ShowAllUsers.Text = "Всі";
             this.ShowAllUsers.UseVisualStyleBackColor = true;
+            this.ShowAllUsers.Click += new System.EventHandler(this.ShowAllUsers_Click);
             // 
             // ShowAllbooks
             // 
@@ -218,6 +212,7 @@
             this.ShowAllbooks.TabIndex = 19;
             this.ShowAllbooks.Text = "Всі";
             this.ShowAllbooks.UseVisualStyleBackColor = true;
+            this.ShowAllbooks.Click += new System.EventHandler(this.ShowAllbooks_Click);
             // 
             // label3
             // 
@@ -292,9 +287,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(22, 345);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.Size = new System.Drawing.Size(117, 16);
             this.label5.TabIndex = 27;
-            this.label5.Text = "Автор";
+            this.label5.Text = "Кількість авторів";
             // 
             // label6
             // 
@@ -329,13 +324,13 @@
             this.BookReaderListBox.ItemHeight = 16;
             this.BookReaderListBox.Location = new System.Drawing.Point(364, 139);
             this.BookReaderListBox.Name = "BookReaderListBox";
-            this.BookReaderListBox.Size = new System.Drawing.Size(292, 132);
+            this.BookReaderListBox.Size = new System.Drawing.Size(292, 52);
             this.BookReaderListBox.TabIndex = 31;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(45, 692);
+            this.label9.Location = new System.Drawing.Point(35, 619);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 16);
             this.label9.TabIndex = 32;
@@ -345,7 +340,7 @@
             // 
             this.AuthorsListBox.FormattingEnabled = true;
             this.AuthorsListBox.ItemHeight = 16;
-            this.AuthorsListBox.Location = new System.Drawing.Point(35, 584);
+            this.AuthorsListBox.Location = new System.Drawing.Point(25, 511);
             this.AuthorsListBox.Name = "AuthorsListBox";
             this.AuthorsListBox.Size = new System.Drawing.Size(291, 100);
             this.AuthorsListBox.TabIndex = 33;
@@ -353,14 +348,14 @@
             // 
             // AuthorNameInput
             // 
-            this.AuthorNameInput.Location = new System.Drawing.Point(34, 694);
+            this.AuthorNameInput.Location = new System.Drawing.Point(24, 621);
             this.AuthorNameInput.Name = "AuthorNameInput";
             this.AuthorNameInput.Size = new System.Drawing.Size(193, 22);
             this.AuthorNameInput.TabIndex = 35;
             // 
             // RemoveAuthorBtn
             // 
-            this.RemoveAuthorBtn.Location = new System.Drawing.Point(237, 694);
+            this.RemoveAuthorBtn.Location = new System.Drawing.Point(227, 621);
             this.RemoveAuthorBtn.Name = "RemoveAuthorBtn";
             this.RemoveAuthorBtn.Size = new System.Drawing.Size(89, 23);
             this.RemoveAuthorBtn.TabIndex = 36;
@@ -387,7 +382,7 @@
             // 
             // EditAuthorBtn
             // 
-            this.EditAuthorBtn.Location = new System.Drawing.Point(127, 731);
+            this.EditAuthorBtn.Location = new System.Drawing.Point(117, 658);
             this.EditAuthorBtn.Name = "EditAuthorBtn";
             this.EditAuthorBtn.Size = new System.Drawing.Size(100, 23);
             this.EditAuthorBtn.TabIndex = 45;
@@ -396,7 +391,7 @@
             // 
             // AddAuthorBtn
             // 
-            this.AddAuthorBtn.Location = new System.Drawing.Point(34, 731);
+            this.AddAuthorBtn.Location = new System.Drawing.Point(24, 658);
             this.AddAuthorBtn.Name = "AddAuthorBtn";
             this.AddAuthorBtn.Size = new System.Drawing.Size(75, 23);
             this.AddAuthorBtn.TabIndex = 46;
@@ -421,6 +416,7 @@
             this.button4.TabIndex = 48;
             this.button4.Text = "Боржники";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -430,12 +426,13 @@
             this.button5.TabIndex = 49;
             this.button5.Text = "Зайняті";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(31, 561);
+            this.label12.Location = new System.Drawing.Point(21, 488);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 20);
             this.label12.TabIndex = 51;
@@ -449,11 +446,31 @@
             this.AuthorsCountStatusL.Size = new System.Drawing.Size(0, 16);
             this.AuthorsCountStatusL.TabIndex = 53;
             // 
+            // BookAuthorsListBox
+            // 
+            this.BookAuthorsListBox.FormattingEnabled = true;
+            this.BookAuthorsListBox.ItemHeight = 16;
+            this.BookAuthorsListBox.Location = new System.Drawing.Point(364, 219);
+            this.BookAuthorsListBox.Name = "BookAuthorsListBox";
+            this.BookAuthorsListBox.Size = new System.Drawing.Size(292, 52);
+            this.BookAuthorsListBox.TabIndex = 54;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(361, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(120, 16);
+            this.label10.TabIndex = 55;
+            this.label10.Text = "Автори цієї книги";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1372, 827);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.BookAuthorsListBox);
             this.Controls.Add(this.AuthorsCountStatusL);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button5);
@@ -494,17 +511,14 @@
             this.Controls.Add(this.BooksListBox);
             this.Controls.Add(this.BookTitleInput);
             this.Controls.Add(this.AddBookBtn);
-            this.Controls.Add(this.BookAuthorInput);
             this.Name = "AdminForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox BookAuthorInput;
         private System.Windows.Forms.Button AddBookBtn;
         private System.Windows.Forms.TextBox BookTitleInput;
         private System.Windows.Forms.ListBox BooksListBox;
@@ -545,6 +559,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label AuthorsCountStatusL;
+        private System.Windows.Forms.ListBox BookAuthorsListBox;
+        private System.Windows.Forms.Label label10;
     }
 }
 

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace final_project
 {
-    internal class Author
+    internal class Author : Person
     {
-        public string Name { get; set; }
-        public Guid _Id { get; set; }
-        public List<Guid> BooksId { get; set; }
-        
         public Author()
         {
             Console.WriteLine("author created from db");

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace final_project
 {
@@ -45,12 +46,12 @@ namespace final_project
                     AuthorBookList = JsonConvert.DeserializeObject<List<AuthorBook>>(json);
                 }
         }
-        public void AddNewBook(string title, string author, Guid authorId, List<Guid> authors_ids)
+        public void AddNewBook(string title, List<Guid> authors_ids)
         {
-            Book book = new Book(title, author, authorId, authors_ids);
+            Book book = new Book(title);
             AddNewAuthorBook(book._Id, authors_ids);
             RefreshAuthorBook();
-            //AuthorBook authorBook = new AuthorBook(book._Id, )
+
             BooksList.Add(book);
             RefreshBooksJson();
         }
@@ -201,6 +202,7 @@ namespace final_project
         {
             Console.WriteLine("give book");
             reader.Books_Ids.Add(book._Id);
+            reader.IsReading = true;
             book.Reader_ID = reader._Id;
             book.IsOnUse = true;
             RefreshReadersJson();
@@ -209,6 +211,7 @@ namespace final_project
         public void ReturnBookFromUser(Book book, Reader reader)
         {
             reader.Books_Ids.Remove(book._Id);
+            reader.IsReading = false;
             book.Reader_ID = Guid.Empty;
             book.IsOnUse = false;
             RefreshReadersJson();
@@ -221,6 +224,18 @@ namespace final_project
             {
                 AuthorBookList.Add(new AuthorBook(bookId, id));
             }
+        }
+
+        public List<Author> GetBookAuthors(Guid id)
+        {
+            List<Author> list = new List<Author>();
+           
+            List<Guid> list_ids = (List<Guid>)AuthorBookList.Where(x => x.Book_Id == id).Select(x => x.Author_Id).ToList();
+            foreach(Guid Id in list_ids)
+            {
+                list.Add(AuthorsList.Find(x => x._Id == Id));
+            }
+            return list;
         }
     }
 }
