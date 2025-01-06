@@ -1,2 +1,2 @@
 # final_project
-This is final project of the first course in Kiev Politechinikal University.
+This is final project of the first year in Kiev Politechiniс University.
